@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>blurCSS</title>
+
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+
+
+<link rel="stylesheet" href="vendor/google/roboto/fonts.css">
+<link rel="stylesheet" href="css/blur.css">
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+	<blur>
+
+		<nav bg-pinkA400>
+			<div banner>
+				<img inverted fluid src="img/banner.png">
+			</div>
+			<a tabindex=1 view="home">home</a>
+			<a tabindex=2 view="panels">
+				panels
+				<sub>Content delivery &amp; navigation</sub>
+			</a>
+			<a tabindex=3 view="typeography">typography</a>
+			<a tabindex=4 view="modals">
+				modals
+				<sub>Dialogs, alerts, ...</sub>
+			</a>
+			<a tabindex=5 view="forms">
+				forms
+				<sub>Textboxes, inputs, buttons, ...</sub>
+			</a>
+			<a tabindex=6 view="blur">
+				blur
+				<sub>The main attraction?</sub>
+			</a>
+			<a tabindex=7 view="helpers">
+				helpers
+				<sub>Some stuffs that might help</sub>
+			</a>
+		</nav>
+
+		<content>
+			<view id="home" active>
+				<div wrapped>
+				<div centered>
+					<img hero src="img/hero.png">
+				</div>
+				<hr>
+				
+				<h1>Compatibility</h1>
+				<p>Desktop browsers not older than 2 years should be fully supported (as of 2017). Mobile browsers on the other hand are questionable. Works best with webkits.</p>
+				
+				<h1>Let's Start!</h1>
+				<p>Download the .zip file if you haven't downloaded it yet.</p>
+				
+				<h1>No More Classes!</h1>
+				<p>Hurray! <b>blurCSS</b> uses attributes to define styles for ease &amp; simplicity.</p>
+				<p>And hey, it's we're web developers &ndash; we create our own environment &nbsp;&nbsp;<span blurred-on="hover" style="transform: rotate(58deg)">;)</span></p>
+				</div>
+			</view>
+			<view id="typeography">
+				<h1>Typography</h1>
+				<p lead="">
+					Default font is RobotoDraft.<br>
+					Everything is pretty basic from <code>h1</code> to <code>h6</code>, <code>p</code>, and <code>code</code>.
+				</p>
+				<hr>
+				<h1>Heading 1</h1>
+				<h2>Heading 2</h2>
+				<h3>Heading 3</h3>
+				<h4>Heading 4</h4>
+				<h5>Heading 5</h5>
+				<h6>Heading 6</h6>
+				<hr>
+				<p lead="">
+					This is a lead paragraph. It can be done by adding a <code>lead</code> attribute.
+				</p>
+				<hr>
+				<p>
+					Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+					Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+					Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+					Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+					Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+				</p>
+				<hr>
+				<h3>Helpers are available</h3>
+				<hr>
+				<table fluid="">
+					<tbody>
+						<tr>
+							<td v-top="">
+								<code>align-left</code>
+								<p align-left="">
+									Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+									Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+									Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+								</p>
+							</td>
+							<td v-top="">
+								<code>align-center|centered</code>
+								<p centered="">
+									Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+									Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+									Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+								</p>
+							</td>
+							<td v-top="">
+								<code>align-right</code>
+								<p align-right="">
+									Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+									Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+									Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+								</p>
+							</td>
+							<td v-top="">
+								<code>align-justify|justified</code>
+								<p justified="">
+									Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+									Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+									Lorem ipsum the fox has jumped over the fence. Lorem ipsum the fox has jumped over the fence.
+								</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<hr>
+				<h3>Example of a table</h3>
+				<table>
+					<tbody>
+						<tr bold="" bg-teal="">
+							<td>SCH</td><td>M</td><td>T</td><td>W</td><td>TH</td><td>F</td>
+						</tr>
+						<tr>
+							<td>7:30 – 8:00</td><td>eat</td><td>eat</td><td>eat</td><td>eat</td><td>eat</td>
+						</tr>
+						<tr>
+							<td>8:00 – 8:30</td><td>eat</td><td>eat</td><td>eat</td><td>eat</td><td>eat</td>
+						</tr>
+					</tbody>
+				</table>
+			</view>
+			
+			
+		</content>
+
+	</blur>
+	
+<script>
+$(function() {
+	var _views = $("view");
+	var _nav = $("nav");
+	$("a[view]").each(function(i) {
+		var self = $(this);
+		var target = self.attr("view");
+		if(!self.attr("view-attached")) {
+			self.on("click tap", function(e) {
+				
+				e.preventDefault();
+				e.stopPropagation();
+				
+				if(!_nav.attr("opened") || target == $("view[active]").attr("id")) {
+					_nav.attr("opened", true);
+					return false;
+				}
+				var t = $("view[active]");
+				t.attr("phase-y", true);
+				setTimeout(function() {
+					t.attr("phase-z", true);
+				}, 300);
+				
+				_nav.removeAttr("opened");
+				
+				setTimeout(function() {
+					t.removeAttr("active phase-y phase-z");
+					_views.each(function(j) {
+						var _s = $(this);
+						if(_s.attr("id") == target) {
+							_s.attr("active", true);
+							_s.attr("phase-a", true);
+							setTimeout(function() {
+								_s.attr("phase-b", true);
+							}, 50);
+							setTimeout(function() {
+								_s.removeAttr("phase-a phase-b");
+							}, 500);
+							return false; // break $.each
+						}
+					});
+				}, 500);
+			
+			});
+		
+			self.attr("view-attached", true);
+		}
+	});
+	
+	(function() {
+		var nav = $("nav");
+		var on = function(e) {
+			nav.attr("opened", true);
+			e.stopPropagation();
+		};
+		var off = function(e) {
+			nav.removeAttr("opened");
+			e.stopPropagation();
+		};
+		//$("nav, nav > a").hover(on, off).focus(on).blur(off);
+		$("nav, nav > a").hover(on, off);
+	})();
+
+});
+</script>
+</body>
+</html>

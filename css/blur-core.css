@@ -1,0 +1,293 @@
+/*!
+ * blur css
+ * component: core
+ * notes: resets & defines the basic components of the lib
+**/
+
+/* resets */
+* {
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+	-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+	-webkit-tap-highlight-color: rgba(100,30,10,0); /* tap highlight color / shadow */
+	-webkit-user-select: text;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+	-moz-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+	-moz-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+	-moz-tap-highlight-color: rgba(100,30,10,0); /* tap highlight color / shadow */
+	-moz-user-select: text;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+	font-family: "SF Pro Display", "Helvetica Neue", "Roboto", "Open Sans", Tahoma, sans-serif !important;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	/* make em responsive */
+	max-width: 100%;
+}
+
+img { display: inline-block }
+
+blur, view, content,
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+a {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	color: rgba(50, 100, 150, 0.8);
+}
+b {
+	font-weight: 700;
+}
+i, em{
+	font-style: italic;
+}
+del {
+    text-decoration: line-through;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+hr {
+	display: block;
+	height: 1px;
+	border: 0;   
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+input, select {
+	vertical-align: middle;
+}
+span {
+	display: inline-block;
+}
+/* end of resets */
+
+/***********************************/
+
+/* thin out the scrollbars */
+::-webkit-scrollbar {
+	width: 8px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+	border: 0px solid transparent;
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 8px;
+	background: rgba(180, 180, 180, .8);
+}
+::-webkit-scrollbar-corner {
+	background:#eee;
+}
+
+/* overflow fix for touch */
+nav, content, view { -webkit-overflow-scrolling: touch; }
+
+/* core components */
+blur {
+	overflow: hidden !important;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+nav {
+	position: fixed;
+	z-index: 5;
+	box-shadow: 0 0 20px 0 rgba(0,0,0,0.19), 0 0 17px 0 rgba(0,0,0,0.2);
+	backdrop-filter: blur(10px);
+}
+
+nav > a {
+	display: block;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: white;
+}
+@media not all and (hover: none) {
+	/* hover effects */
+	nav > a {
+		opacity: .67;
+	}
+
+	nav a[active], nav > a:hover, nav > a:focus, nav > a:active {
+		opacity: 1!important;
+	}
+}
+
+content, content > view {
+	width: 100%;
+	max-width: 100%;
+	min-width: 100%;
+	height: 100%;
+	min-height: 100%;
+	max-height: 100%;
+}
+
+content {
+	position: absolute;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+content > view {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 16px;
+}
+
+view {
+	display: none;
+}
+
+view[active] {
+	display: block!important;
+}
+
+
+@media (min-width: 701px) { /* desktops/hi-dpi */
+	nav {
+		left: 0px;
+		top: 0px;
+		bottom: 0px;
+		width: 240px;
+		height: 100%;
+	}
+	
+	nav > a {
+		font-size: 16px;
+		padding: 16px;
+		line-height: 1em;
+	}
+	
+	nav > a > sub {
+		font-size: 9px !important;
+		display: block;
+		line-height: 8px;
+		opacity: .8;
+	}
+	
+	content {
+		top: 0px;
+		left: 240px;
+		bottom: 0px;
+		padding-right: 240px;
+	}
+	
+	content [hero] {
+		/*display: none;*/
+	}
+	
+	[wrapped] {
+		/* max width to 886px [1366-240-240] */
+		/* center-wrap */
+		max-width: 886px;
+		min-width: auto;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	content > view {
+		/* add more space to desktop */
+		padding: 32px;
+	}
+
+}
+@media (max-width: 700px) { /* mobiles / low-dpi */
+	nav {
+		left: 0px;
+		bottom: 0px;
+		right: 0px;
+		width: 100%;
+		height: 56px;
+	}
+	nav > [banner] {
+		display: none;
+	}
+	nav > a {
+		padding: 0px 16px;
+		line-height: 56px;
+	}
+	nav::before {
+		content: "\25B2";
+		position: absolute;
+		top: 0px;
+		right: 24px;
+		line-height: 56px;
+	}
+	nav[opened]::before {
+		content: "\25BC";
+	}
+	
+	nav[opened] {
+		margin-top: -75%;
+		height: 75%;
+		overflow-y: scroll;
+	}
+	nav[opened] * {
+		/*pointer-events: none;*/
+	}
+	nav[opened] + content > view {
+		overflow-x: hidden !important;
+		overflow-y: hidden !important;
+	}
+	
+	content {
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		padding-bottom: 56px;
+	}
+
+}

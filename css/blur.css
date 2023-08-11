@@ -1,0 +1,10 @@
+/**
+ * blur css autoloader
+ */
+@import "blur-core.css";
+@import "blur-colors.css";
+@import "blur-typography.css";
+@import "blur-animations.css";
+@import "blur-helpers.css";
+@import "blur-desktop.css" media (min-width: 701px) /* desktops/hi-dpi */
+@import "blur-mobile.css" media (max-width: 700px); /* mobiles / low-dpi */
